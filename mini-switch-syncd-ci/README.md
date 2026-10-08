@@ -2,7 +2,9 @@
 
 The first actual public build failed during dependency installation; no production object or private syncd link was accepted.
 Its authenticated evidence is retained at `reports/sonic-syncd-cloud/run-37708720935` in the private project.
-The corrected seven-package candidate remains unexecuted until a new public run completes.
+The second actual seven-package run `37709724075` failed at configure's required SAI API probe and is also preserved separately.
+The public library's actual dynamic symbol table contains that defined global, while its swsscommon dependency names three SONiC libnl libraries absent from the seven-package inputs.
+The corrected ten-package candidate remains unexecuted until a new public run completes.
 It avoids uploading the private ASIC RTL, vendor SAI or MRC software.
 The final private link and SONiC startup must run separately in the Linux guest.
 
@@ -33,10 +35,13 @@ VendorSai's existing unsupported-feature path is used; no implementation stub is
 ## Cloud commands and public inputs
 
 The workflow uses the same digest-pinned official Linux ARM64 Bookworm image as the validated SWSS build.
-It authenticates seven official SONiC runtime/development archives to their recorded Azure source, artifact and package identities.
-Their selected payloads total 2,905,340 compressed bytes.
+It authenticates ten official SONiC runtime/development archives to their recorded Azure source, artifact and package identities.
+Their selected payloads total 3,160,972 compressed bytes.
 The retained actual failure identified `libswsscommon`'s missing `libyang3 >= 3.12.2` runtime dependency.
 The corrected manifest adds the exact `libyang3_3.12.2-1_arm64.deb` from the previously authenticated official common-libs build, rather than substituting Debian Trixie libraries.
+It also adds the exact SONiC base, netfilter and route libnl runtime packages used by the accepted swsscommon ELF.
+Before configure, actual `ldd -r` on the public Redis SAI must show no missing libraries or undefined symbols, and its log is retained on failure.
+The EXIT handler preserves `config.log` even when configure fails; the original required API and executed-version probes remain unchanged.
 Individual bounded file requests avoid downloading the full upstream artifacts.
 Signed Debian APT supplies ordinary development tools; their executed installed identities are recorded.
 These package totals exclude the build image, system packages and expanded build workspace.
@@ -94,4 +99,4 @@ That is parser preparation evidence, not Linux execution or a GNU-strip producti
 The preparation checks did not execute a private native link, SONiC service or guest mutation.
 The parent subsequently published the isolated public branch and executed run `37708720935`; its dependency failure is preserved separately from these preparation results.
 
-The next parent-owned action is to review and publish the seven-package correction, then execute a new real workflow.
+The next parent-owned action is to review and publish the ten-package closure and diagnostic correction, then execute a new real workflow.

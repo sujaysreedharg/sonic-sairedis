@@ -7,6 +7,13 @@ output_dir="$source_root/mini-switch-syncd-out"
 mkdir -p "$output_dir"
 finish() {
     build_exit=$?
+    # Preserve actual configure diagnostics even when configure terminates early.
+    if [ -f "$source_root/config.log" ]; then
+        cp "$source_root/config.log" "$output_dir/configure-detail.log" || build_exit=1
+    fi
+    if [ -f "$source_root/config.h" ]; then
+        cp "$source_root/config.h" "$output_dir/config.h.log" || build_exit=1
+    fi
     if ! python3 -B "$ci_root/build_receipt.py" --source "$source_root" --ci "$ci_root" \
         --output "$output_dir" --exit-code "$build_exit"; then
         if [ "$build_exit" -eq 0 ]; then build_exit=1; fi
@@ -45,6 +52,16 @@ ci_library_dir="$source_root/mini-switch-syncd-libraries"
 mkdir -p "$ci_library_dir"
 ln -s /usr/lib/aarch64-linux-gnu/libsairedis.so "$ci_library_dir/libsai.so"
 export LD_LIBRARY_PATH="$ci_library_dir"
+ldd -r /usr/lib/aarch64-linux-gnu/libsairedis.so > "$output_dir/preconfigure-public-loader.log" 2>&1
+python3 - "$output_dir/preconfigure-public-loader.log" <<'PY'
+from pathlib import Path
+import sys
+text = Path(sys.argv[1]).read_text()
+if any(term in text for term in ("not found", "undefined symbol:", "libsaivs")):
+    raise SystemExit("Actual public configure library has an unresolved loader closure; see preserved preconfigure-public-loader.log")
+if "libswsscommon.so" not in text or "ld-linux-aarch64.so.1" not in text:
+    raise SystemExit("Actual public configure library lacks its expected native loader dependency")
+PY
 c++ --version > "$output_dir/compiler-version.txt"
 cd "$source_root"
 ./autogen.sh > "$output_dir/autogen.log" 2>&1

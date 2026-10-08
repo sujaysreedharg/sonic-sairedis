@@ -16,6 +16,24 @@
       "artifact_root_id": "A5D50C7F34F394AF13C01FACB67C350B979A485DDA9D464BB18812D3681FE27A02",
       "packages": [
         {
+          "archive_path": "common-lib.arm64/target/debs/bookworm/libnl-3-200_3.7.0-0.2+b1sonic1_arm64.deb",
+          "filename": "libnl-3-200_3.7.0-0.2+b1sonic1_arm64.deb",
+          "size": 55980,
+          "sha256": "143cdfafe12fa32022cddbc17625c9ee4bb572d29c63f984a21b076c2761c994"
+        },
+        {
+          "archive_path": "common-lib.arm64/target/debs/bookworm/libnl-nf-3-200_3.7.0-0.2+b1sonic1_arm64.deb",
+          "filename": "libnl-nf-3-200_3.7.0-0.2+b1sonic1_arm64.deb",
+          "size": 36272,
+          "sha256": "d5b812ae43cfac788ba9d4ff5509dd82547edf797b1655c8a683ab763ec85a1b"
+        },
+        {
+          "archive_path": "common-lib.arm64/target/debs/bookworm/libnl-route-3-200_3.7.0-0.2+b1sonic1_arm64.deb",
+          "filename": "libnl-route-3-200_3.7.0-0.2+b1sonic1_arm64.deb",
+          "size": 163380,
+          "sha256": "b56edd7ff95c6a16c34901848a73d441888147d5cbd73d64312c42de44522180"
+        },
+        {
           "archive_path": "common-lib.arm64/target/debs/bookworm/libyang3_3.12.2-1_arm64.deb",
           "filename": "libyang3_3.12.2-1_arm64.deb",
           "size": 451572,

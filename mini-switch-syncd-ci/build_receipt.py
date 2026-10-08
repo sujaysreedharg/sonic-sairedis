@@ -55,12 +55,12 @@ def main():
     archive_match = (archive_path.is_file() and archive.get("filename") == archive_path.name
                      and archive.get("bytes") == archive_path.stat().st_size and archive.get("sha256") == sha(archive_path)
                      and archive_path.stat().st_size <= 32 * 1024**2)
-    logs = ("source-inputs.log", "autogen.log", "configure.log", "configure-detail.log", "config.h.log",
+    logs = ("source-inputs.log", "autogen.log", "preconfigure-public-loader.log", "configure.log", "configure-detail.log", "config.h.log",
             "metadata-generator.log", "redis-objects.log", "syncd-objects.log", "upstream-link-dry-run.log",
             "public-syncd-link.log", "object-export-command.log", "compiler-version.txt", "policy-unit.log")
     logs_match = all((out / name).is_file() and (out / name).stat().st_size > 0 for name in logs)
     checks = {"actual_linux_arm64": platform.system() == "Linux" and platform.machine() == "aarch64",
-              "all_seven_official_packages_authenticated": packages == expected_packages and len(packages) == 7,
+              "all_ten_official_packages_authenticated": packages == expected_packages and len(packages) == 10,
               "installed_package_identities_match": installed_match,
               "actual_three_production_relocatables_authenticated": exported_match,
               "bounded_archive_authenticated": archive_match,
