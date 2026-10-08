@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-07T22:12:19Z",
+  "scope": "Genuine public syncd production object compilation and public Redis-SAI validation link; private vendor link is a separate local gate",
+  "image": "sonicdev-microsoft.azurecr.io/sonic-slave-bookworm@sha256:f0553eaa83e204edd30b3bcb06bbb353c27d65129a0115b1a0604b646ea36c1a",
+  "image_architecture": "arm64",
+  "image_compressed_bytes": 2798060190,
+  "azure_artifacts": [
+    {
+      "component": "swss-common",
+      "build_id": 1232536,
+      "source_version": "8a2e71b6523faeae6b0107fe54c22793b0509067",
+      "build_result": "succeeded",
+      "artifact_name": "sonic-swss-common-bookworm.arm64",
+      "artifact_resource_data": "1173AC37BE92ACA243E25D12BE212C86D2CC1C475AE6482F57B64E5AEAFB13B301",
+      "artifact_root_id": "1D733BA5AA4F884D64DC55C02B674DD67DBB404B09CC2D59659DD4D61BA4DA1602",
+      "packages": [
+        {
+          "archive_path": "sonic-swss-common-bookworm.arm64/libswsscommon-dev_1.0.0_arm64.deb",
+          "filename": "libswsscommon-dev_1.0.0_arm64.deb",
+          "size": 63580,
+          "sha256": "150cabef5e37543f654b3e48cd60256ec02b7fb3ccc33c0cdd38a9f49694ad4b"
+        },
+        {
+          "archive_path": "sonic-swss-common-bookworm.arm64/libswsscommon_1.0.0_arm64.deb",
+          "filename": "libswsscommon_1.0.0_arm64.deb",
+          "size": 767508,
+          "sha256": "fd50a4a4fb9e1156e080ce17351c2b083ca24d797c3bdacee43a27fbb5655740"
+        }
+      ]
+    },
+    {
+      "component": "sairedis",
+      "build_id": 1229508,
+      "source_version": "3ee202d5191838f9da4bef25ce0088d36c323fe2",
+      "build_result": "partiallySucceeded",
+      "artifact_name": "sonic-sairedis-bookworm.arm64",
+      "artifact_resource_data": "B940D277B871F7DA481A1F2160CB07BB8933CDE5DCE301EAE4585610CF4BAD5701",
+      "artifact_root_id": "4F43D4E41C0D5A784691B8985A25C7436C7BEC7DF85AED022BDFBBC243558D4302",
+      "packages": [
+        {
+          "archive_path": "sonic-sairedis-bookworm.arm64/libsaimetadata-dev_1.0.0_arm64.deb",
+          "filename": "libsaimetadata-dev_1.0.0_arm64.deb",
+          "size": 58928,
+          "sha256": "a9ac71a6eaadf033fdbbde9909d6821d01349ac50bb4b571117d6c3c5ea8f3f8"
+        },
+        {
+          "archive_path": "sonic-sairedis-bookworm.arm64/libsaimetadata_1.0.0_arm64.deb",
+          "filename": "libsaimetadata_1.0.0_arm64.deb",
+          "size": 1006244,
+          "sha256": "aa3414af3804b11f91330b6b6cd477499f7cc476fe5e21b424a291e2bdb1827a"
+        },
+        {
+          "archive_path": "sonic-sairedis-bookworm.arm64/libsairedis-dev_1.0.0_arm64.deb",
+          "filename": "libsairedis-dev_1.0.0_arm64.deb",
+          "size": 4432,
+          "sha256": "782769e63b479d14098ecd2670a2075b0ea13962e14710e7890f1bbe1d0c06b9"
+        },
+        {
+          "archive_path": "sonic-sairedis-bookworm.arm64/libsairedis_1.0.0_arm64.deb",
+          "filename": "libsairedis_1.0.0_arm64.deb",
+          "size": 553076,
+          "sha256": "be66613941f1a25cf5e8ccaff224f3285d3e6b2b40a58e5959608cc47837553b"
+        }
+      ]
+    }
+  ]
+}

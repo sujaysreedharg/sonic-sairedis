@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "sai_version": "1.18.1",
+  "sai_api_version": 11801,
+  "required_export": "sai_query_api_version",
+  "optional_exports": {
+    "sai_bulk_object_clear_stats": true,
+    "sai_bulk_object_get_stats": true,
+    "sai_query_stats_st_capability": true,
+    "sai_tam_telemetry_get_data": false
+  },
+  "configure_negative_cache": {
+    "ac_cv_func_sai_tam_telemetry_get_data": "no"
+  },
+  "measurement": {
+    "kind": "Actual privately compiled Linux AArch64 vendor ELF dynamic symbols and API query",
+    "library_bytes": 415568,
+    "library_sha256": "3088ce1d39f4b374e5404469bfa327c7ac5d8b164bca747320382233b85fdaf9",
+    "api_query_status": 0,
+    "null_api_query_status": -5
+  },
+  "public_library_is_vendor": false,
+  "private_implementation_included": false
+}

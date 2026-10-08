@@ -1,0 +1,63 @@
+name: MiniSwitch public ARM64 syncd production objects
+"on":
+  workflow_dispatch:
+  push:
+    branches: [mini-switch/syncd-public-objects-20261007]
+permissions:
+  contents: read
+concurrency:
+  group: mini-switch-syncd-public-objects
+  cancel-in-progress: false
+jobs:
+  compile:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          fetch-depth: 0
+          submodules: recursive
+          persist-credentials: false
+      - name: Record runner and bound storage
+        run: |
+          uname -a
+          df -h
+          test "$(uname -m)" = aarch64
+          python3 - <<'PY'
+          import shutil
+          assert shutil.disk_usage('.').free >= 12 * 1024**3, 'Less than 12 GiB free on disposable runner'
+          PY
+      - name: Pull pinned official ARM64 build image
+        run: docker pull sonicdev-microsoft.azurecr.io/sonic-slave-bookworm@sha256:f0553eaa83e204edd30b3bcb06bbb353c27d65129a0115b1a0604b646ea36c1a
+      - name: Compile real production objects and public validation link
+        run: |
+          docker run --rm --user 0:0 \
+            --mount "type=bind,source=$GITHUB_WORKSPACE,target=/work" \
+            --workdir /work \
+            sonicdev-microsoft.azurecr.io/sonic-slave-bookworm@sha256:f0553eaa83e204edd30b3bcb06bbb353c27d65129a0115b1a0604b646ea36c1a \
+            bash /work/mini-switch-syncd-ci/build.sh
+      - name: Preserve actual compiler evidence
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: mini-switch-arm64-syncd-evidence
+          path: |
+            mini-switch-syncd-out/*.json
+            mini-switch-syncd-out/*.log
+            mini-switch-syncd-out/*.txt
+            mini-switch-syncd-out/*.tsv
+            mini-switch-syncd-out/object-export/logs/*.log
+          if-no-files-found: warn
+          retention-days: 7
+          compression-level: 9
+      - name: Preserve bounded relocatable public production object bundle
+        if: success()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: mini-switch-arm64-syncd-objects
+          path: |
+            mini-switch-syncd-out/mini-switch-arm64-syncd-objects.tar.gz
+            mini-switch-syncd-out/object-export.json
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0

@@ -1,0 +1,11 @@
+Public syncd production relocatables are compiled from sonic-net/sonic-sairedis
+at commit 3ee202d5191838f9da4bef25ce0088d36c323fe2 with the exact
+opencomputeproject/SAI submodule at c67f1152309ca08a94de0be8634a733c5cb25c35.
+The source repositories and source/header/package identities are included in
+source.json, sai-headers.json and dependencies.json.
+Upstream production source is unchanged.
+The generated configure selection disables the target's absent optional TAM
+telemetry global; this is recorded in vendor-interface-profile.json and config.h.
+The upstream copyright and license notices accompany the object artifact.
+The public validation link uses real Redis SAI, not the private MiniSwitch vendor.
+The private vendor implementation, RTL and endpoint software are not included.

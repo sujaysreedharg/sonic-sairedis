@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "repository": "sonic-net/sonic-sairedis",
+  "source_commit": "3ee202d5191838f9da4bef25ce0088d36c323fe2",
+  "sai_repository": "opencomputeproject/SAI",
+  "sai_commit": "c67f1152309ca08a94de0be8634a733c5cb25c35",
+  "public_input_paths": [
+    "configure.ac",
+    "Makefile.am",
+    "autogen.sh",
+    "lib/Makefile.am",
+    "syncd/Makefile.am",
+    "meta/Makefile.am",
+    "syncd/VendorSai.cpp"
+  ],
+  "source_hashes": {
+    "configure.ac": "b44b5b70afe1a21d80ab9a4ff42c7315030c2fda3c83d472743796ec5ec0d94f",
+    "Makefile.am": "9c2215936f54a2638dab33d6f6dee2cdf6bc74d4c3a7afd21c8970a4dc4e0d2a",
+    "autogen.sh": "b3ae4308110d0fb6f6a7a27f147d9a1b596ad20969d768b20c848eb04901c961",
+    "lib/Makefile.am": "bb169a7fe6efc1ef76275637ebde7f7605c8bebd4ff1db2c5e759f7da99220d4",
+    "syncd/Makefile.am": "cefb55d0e73d58b213615147cb6d5cede22ea0c50dd75d9fd919cbc2ab4e5084",
+    "meta/Makefile.am": "e6b1cb1186616fd6bc74d5511ded5054ba1d4de499f179029013922973b45645",
+    "syncd/VendorSai.cpp": "dc3f91508af9faa87c91c9d9ac76164fd198b9cf345fd6c8490e771eb8e1f564"
+  }
+}
