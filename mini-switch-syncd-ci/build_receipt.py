@@ -60,7 +60,7 @@ def main():
             "public-syncd-link.log", "object-export-command.log", "compiler-version.txt", "policy-unit.log")
     logs_match = all((out / name).is_file() and (out / name).stat().st_size > 0 for name in logs)
     checks = {"actual_linux_arm64": platform.system() == "Linux" and platform.machine() == "aarch64",
-              "all_six_official_packages_authenticated": packages == expected_packages and len(packages) == 6,
+              "all_seven_official_packages_authenticated": packages == expected_packages and len(packages) == 7,
               "installed_package_identities_match": installed_match,
               "actual_three_production_relocatables_authenticated": exported_match,
               "bounded_archive_authenticated": archive_match,

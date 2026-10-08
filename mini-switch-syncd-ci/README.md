@@ -1,6 +1,8 @@
 # Public syncd objects for a private native vendor link
 
-This is a prepared public build candidate, with no executed cloud build or private syncd link yet.
+The first actual public build failed during dependency installation; no production object or private syncd link was accepted.
+Its authenticated evidence is retained at `reports/sonic-syncd-cloud/run-37708720935` in the private project.
+The corrected seven-package candidate remains unexecuted until a new public run completes.
 It avoids uploading the private ASIC RTL, vendor SAI or MRC software.
 The final private link and SONiC startup must run separately in the Linux guest.
 
@@ -31,8 +33,10 @@ VendorSai's existing unsupported-feature path is used; no implementation stub is
 ## Cloud commands and public inputs
 
 The workflow uses the same digest-pinned official Linux ARM64 Bookworm image as the validated SWSS build.
-It authenticates six official SONiC runtime/development archives to their recorded Azure source, artifact and package identities.
-Their selected payloads total 2,453,768 compressed bytes.
+It authenticates seven official SONiC runtime/development archives to their recorded Azure source, artifact and package identities.
+Their selected payloads total 2,905,340 compressed bytes.
+The retained actual failure identified `libswsscommon`'s missing `libyang3 >= 3.12.2` runtime dependency.
+The corrected manifest adds the exact `libyang3_3.12.2-1_arm64.deb` from the previously authenticated official common-libs build, rather than substituting Debian Trixie libraries.
 Individual bounded file requests avoid downloading the full upstream artifacts.
 Signed Debian APT supplies ordinary development tools; their executed installed identities are recorded.
 These package totals exclude the build image, system packages and expanded build workspace.
@@ -87,6 +91,7 @@ The recorded private ELF hash and optional export profile were independently che
 A tiny actual Mac clang cross-compiled AArch64 relocatable retained identical code/data and normalized nondebug-relocation fingerprints across actual LLVM debug-only stripping.
 Changing a real code byte changed the fingerprint.
 That is parser preparation evidence, not Linux execution or a GNU-strip production result.
-No cloud job, private native link, SONiC service or guest mutation was executed by this preparation.
+The preparation checks did not execute a private native link, SONiC service or guest mutation.
+The parent subsequently published the isolated public branch and executed run `37708720935`; its dependency failure is preserved separately from these preparation results.
 
-The next parent-owned action is to review these candidate bytes, publish the isolated public branch and execute its real workflow.
+The next parent-owned action is to review and publish the seven-package correction, then execute a new real workflow.

@@ -7,6 +7,23 @@
   "image_compressed_bytes": 2798060190,
   "azure_artifacts": [
     {
+      "component": "common-libs",
+      "build_id": 1240175,
+      "source_version": "3091f379290eca9560ef18300b0c0527abc643e2",
+      "build_result": "succeeded",
+      "artifact_name": "common-lib.arm64",
+      "artifact_resource_data": "07F5F6424A42AF9868CF9F639B3F650C3DA13F122A1E193F934484FCB97B4A7F01",
+      "artifact_root_id": "A5D50C7F34F394AF13C01FACB67C350B979A485DDA9D464BB18812D3681FE27A02",
+      "packages": [
+        {
+          "archive_path": "common-lib.arm64/target/debs/bookworm/libyang3_3.12.2-1_arm64.deb",
+          "filename": "libyang3_3.12.2-1_arm64.deb",
+          "size": 451572,
+          "sha256": "3c2ec134e95d59eae935f0ebcd756b45fda03157046a5113c01dbbe3693a32be"
+        }
+      ]
+    },
+    {
       "component": "swss-common",
       "build_id": 1232536,
       "source_version": "8a2e71b6523faeae6b0107fe54c22793b0509067",
